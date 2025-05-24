@@ -3,13 +3,23 @@
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { startGame } from "@/lib/apicalls/startGame";
+import { useToast } from "@/hooks/use-toast";
 export default function Home() {
   const router = useRouter();
-
+  const { toast } = useToast();
   const initGame = async () => {
+    console.log("Initializing the game")
     const response = await startGame();
-    if (response.success) {
+    console.log("The response is", response)
+    if (response === 200) {
       router.push("/game");
+    }
+    else {
+      toast({
+        title: "Failed to start game",
+        description: "Please try again",
+        variant: "destructive",
+      });
     }
   };
 
