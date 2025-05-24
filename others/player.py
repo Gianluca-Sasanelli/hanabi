@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from card import Card
+from others.card import Card
 
 class Player():
     '''

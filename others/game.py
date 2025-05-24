@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from deck import Deck
-from board import Board
-from card import Card
-from player import Player
-from agent import Agent
-from action import Action
+from others.deck import Deck
+from others.board import Board
+from others.card import Card
+from others.player import Player
+from others.action import Action
 
 class Game:
     """
@@ -39,14 +38,11 @@ class Game:
         self.cards_per_player = self.CARDS_PER_PLAYER_CONFIG[n_players]
         # TODO: locate endgame and victory logic in the correct places
         self.endgame = False
-        self.victory = True
+        self.victory = False
 
-        # Initialize the board and deck
         self.board = Board(expert_mode=self.expert_mode)
 
-        # Initialize players and deal cards
         self.players = []
-        self.agents = []
         players_cards = [[] for _ in range(n_players)]
 
         for card_pos in range(self.cards_per_player):
@@ -58,20 +54,10 @@ class Game:
             player_cards = players_cards[player_id]
             new_player = Player(player_id=player_id, cards=player_cards)
             self.players.append(new_player)
-            new_agent = Agent(new_player, expert_mode = self.expert_mode)
-            self.agents.append(new_agent)
         
-        # Initializes player index, starting in player 0
         self.current_player_index = 0
     
     def get_player_view(self, player_id):
-            """
-            Returns a dictionary with the player's view of the game.
-            Each player sees the hands of all other players, but not their own.
-
-            Returns:
-                dict: Keys are player IDs, values are lists of visible cards (other players' hands).
-            """
             player = self.get_player_by_id(player_id)
             visible_hands = {}
             for other in self.players:
@@ -105,18 +91,6 @@ class Game:
             return board_info
     
     def get_player_by_id(self, player_id):
-        """
-        Returns the Player object with the given player_id.
-
-        Args:
-            player_id (int): The ID of the player to retrieve.
-
-        Returns:
-            Player: The matching player object.
-
-        Raises:
-            ValueError: If no player with the given ID exists.
-        """
         for player in self.players:
             if player.player_id == player_id:
                 return player
@@ -125,22 +99,12 @@ class Game:
 
     
     def play_turn(self, action_type, action_params):
-        """
-        Executes the turn of the current player using the provided action.
-
-        Args:
-            action_type (str): One of 'Hint', 'Play', or 'Discard'.
-            action_params (dict): Parameters needed to initialize the action.
-
-        The function creates an Action object and triggers its effects.
-        """
         if self.endgame:
             print("Game is already over.")
             return
 
         current_player = self.players[self.current_player_index]
 
-        # Add the current player to the action_params if not already present
         action_params.setdefault("player", current_player)
         action_params.setdefault("board", self.board)
 
@@ -154,14 +118,8 @@ class Game:
         self.next_turn()
 
     def next_turn(self):
-        """
-        Advances the game to the next player's turn.
-        """
         self.current_player_index = (self.current_player_index + 1) % self.n_players
 
     def get_current_player(self):
-        """
-        Returns the current player object.
-        """
         return self.players[self.current_player_index]
 

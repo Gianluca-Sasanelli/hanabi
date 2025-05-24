@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from player import Player
+from others.player import Player
 
 class Agent(Player):
 

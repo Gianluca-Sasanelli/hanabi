@@ -1,23 +1,7 @@
-# -*- coding: utf-8 -*-
-
-# TODO: remve information
 class Card():
-
-    '''
-    Card contains the information for each card
-    '''
-
-    COLORS = ['Red', 'Blue', 'Yellow', 'Green', 'White', 'Rainbow']
+    COLORS = ['Red', 'Blue', 'Yellow', 'Green', 'White']
     MAX_NUMBER = 5
-
     def __init__(self,number,color,card_id):
-        '''
-        Initialize the card
-        params
-            number: number of the card
-            color: color of the card
-            card_id: identifier to distinguish cards with same color and number
-        '''
         self.number = number
         self.color = color
         self.card_id = card_id

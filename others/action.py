@@ -1,35 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class Discard:
-    """
-    Represents a discard action in the game of Hanabi.
-
-    This class captures all the necessary updates and checks that occur when
-    a player chooses to discard a card from their hand. It handles adding the
-    card to the discard pile, drawing a new one, incrementing the available hints,
-    and checking for endgame conditions when a critical card is lost.
-
-    Attributes:
-        player (Player): The player performing the discard.
-        card_position (int): Index of the card being discarded.
-        board (Board): The current state of the game board.
-    """
-
     def __init__(self, player, card_position, board, agents):
-        """
-        Initializes and executes a discard action.
-
-        Args:
-            player (Player): The player discarding the card.
-            card_position (int): The index of the card in the player's hand to discard.
-            board (Board): The game board containing the deck, discard pile, and hints.
-        """
         self.player = player
         self.card_position = card_position
         self.board = board
         self.agents = agents
-        # TODO: Change the information the player has when discarding a card
-
         if self.board.hints == 8:
             raise ValueError("Hints are already at maximum! Not possible to discard")
 
