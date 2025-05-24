@@ -111,7 +111,7 @@ export async function fetchFromBackend(
       if (response.status !== 404 && response.status !== 204) {
         data = await response.json()
       }
-    } catch (error) {
+    } catch {
       console.error('Newtork error or backend not reachable')
     }
     if (options.returnRawResponse) {
