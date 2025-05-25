@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write ."
+    "lint": "next lint --dir src",
+    "lint:fix": "next lint --dir src --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,md}'"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

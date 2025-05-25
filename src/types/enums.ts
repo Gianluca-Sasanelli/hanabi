@@ -1,12 +1,9 @@
-
-
-
 export enum CardColor {
   RED = "Red",
-  YELLOW = "Yellow", 
+  YELLOW = "Yellow",
   GREEN = "Green",
   BLUE = "Blue",
-  WHITE = "White"
+  WHITE = "White",
 }
 
 export enum CardValue {
@@ -14,17 +11,17 @@ export enum CardValue {
   TWO = 2,
   THREE = 3,
   FOUR = 4,
-  FIVE = 5
+  FIVE = 5,
 }
 
 export enum GameStatus {
   WAITING = "waiting",
-  IN_PROGRESS = "in_progress", 
+  IN_PROGRESS = "in_progress",
   COMPLETED = "completed",
-  LOST = "lost"
+  LOST = "lost",
 }
 
 export enum HintType {
   COLOR = "color",
-  VALUE = "value"
+  VALUE = "value",
 }

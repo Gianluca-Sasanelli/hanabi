@@ -1,4 +1,4 @@
-import { CardColor, CardValue, GameStatus } from './enums';
+import { CardColor, CardValue, GameStatus } from "./enums";
 
 export interface Card {
   id: number;
@@ -9,7 +9,7 @@ export interface Card {
 export interface Player {
   id: number;
   name: string;
-  created_at?: string; 
+  created_at?: string;
 }
 
 export interface Game {
