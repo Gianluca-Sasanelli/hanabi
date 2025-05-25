@@ -1,6 +1,6 @@
 from typing import Optional
-from repository import CardRepository
-from models.models import Card
+from ..repository import CardRepository
+from ..models.models import Card
 
 
 class CardService:

@@ -1,4 +1,4 @@
-from shared.db_connections import get_db_session
+from ..shared.db_connections import get_db_session
 from typing import Any, Optional, TypeVar, Generic
 
 T = TypeVar("T")
