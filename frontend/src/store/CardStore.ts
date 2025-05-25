@@ -1,21 +1,21 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import { Card } from '@/types/hanabi'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { Card } from "@/types/hanabi";
 
 interface CardStore {
   // State
-  cards: Card[]
-  isHydrated: boolean
-  setHydrated: (isHydrated: boolean) => void
+  cards: Card[];
+  isHydrated: boolean;
+  setHydrated: (isHydrated: boolean) => void;
 
   // Setters
-  setCardData: (cards: Card[]) => void
-  addCard: (card: Card) => void
-  removeCard: (cardId: string) => void
-  updateCard: (cardId: string, updates: Partial<Card>) => void
+  setCardData: (cards: Card[]) => void;
+  addCard: (card: Card) => void;
+  removeCard: (cardId: string) => void;
+  updateCard: (cardId: string, updates: Partial<Card>) => void;
 
   // Selectors
-  getCardById: (id: string) => Card | undefined
+  getCardById: (id: string) => Card | undefined;
 }
 
 export const useCardStore = create<CardStore>()(
@@ -42,7 +42,7 @@ export const useCardStore = create<CardStore>()(
       updateCard: (cardId, updates) =>
         set((state) => ({
           cards: state.cards.map((c) =>
-            c.cardId === cardId ? { ...c, ...updates } : c
+            c.cardId === cardId ? { ...c, ...updates } : c,
           ),
         })),
 
@@ -50,12 +50,12 @@ export const useCardStore = create<CardStore>()(
       getCardById: (id) => get().cards.find((c) => c.cardId === id),
     }),
     {
-      name: 'card-storage',
+      name: "card-storage",
       onRehydrateStorage: () => (state) => {
         if (state) {
-          state.setHydrated(true)
+          state.setHydrated(true);
         }
       },
-    }
-  )
-)
+    },
+  ),
+);

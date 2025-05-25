@@ -8,13 +8,12 @@ export default function Home() {
   const router = useRouter();
   const { toast } = useToast();
   const initGame = async () => {
-    console.log("Initializing the game")
+    console.log("Initializing the game");
     const response = await startGame();
-    console.log("The response is", response)
+    console.log("The response is", response);
     if (response === 200) {
       router.push("/game");
-    }
-    else {
+    } else {
       toast({
         title: "Failed to start game",
         description: "Please try again",
@@ -32,7 +31,7 @@ export default function Home() {
         <p className="text-xl md:text-2xl text-gray-200 mb-12">
           Experience the beauty of collaboration
         </p>
-        <Button 
+        <Button
           onClick={initGame}
           className="relative overflow-hidden px-8 py-4 text-xl bg-gradient-to-r from-yellow-500 to-red-500 rounded-full text-white font-semibold transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/40 focus:outline-none"
         >
