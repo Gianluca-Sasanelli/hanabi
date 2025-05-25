@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, HTTPException
-from ..service.card_service import CardService
+from api.service.card_service import CardService
 
 card_service = CardService()
 router = APIRouter(prefix="/card", tags=["card"])

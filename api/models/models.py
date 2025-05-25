@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 from datetime import datetime
-from .enums import CardColor, CardValue, GameStatus
+from api.models.enums import CardColor, CardValue, GameStatus
 
 
 @dataclass

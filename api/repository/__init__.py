@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from models.models import Card, Player, Game, GamePlayer, GameDeck, PlayerHand, DiscardPile, PlayedCard
+from api.models.models import Card, Player, Game, GamePlayer, GameDeck, PlayerHand, DiscardPile, PlayedCard
 
 
 class CardRepository(BaseRepository[Card]):
