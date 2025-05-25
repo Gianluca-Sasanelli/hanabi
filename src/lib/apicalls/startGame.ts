@@ -1,9 +1,15 @@
 export async function startGame(): Promise<number> {
   console.log("Starting the game");
-  const response = await fetch("/api/card/", {
+  const response = await fetch("/api/card", {
     method: "GET",
   });
-  const data = await response.json();
+  console.log("Response status:", response.status);
+  console.log("Response headers:", response.headers);
+  console.log("Response URL:", response.url);
+  
+  const text = await response.text(); // Get as text first
+  console.log("Raw response:", text);
+  const data = await response.json()
   if (response.ok) {
     console.log("Game started successfully");
     console.log("The response data is:", data);

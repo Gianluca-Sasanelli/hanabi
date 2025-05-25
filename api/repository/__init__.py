@@ -1,4 +1,4 @@
-from .base_repository import BaseRepository
+from api.repository.base_repository import BaseRepository
 from api.models.models import Card, Player, Game, GamePlayer, GameDeck, PlayerHand, DiscardPile, PlayedCard
 
 
