@@ -6,10 +6,7 @@ export async function startGame(): Promise<number> {
   console.log("Response status:", response.status);
   console.log("Response headers:", response.headers);
   console.log("Response URL:", response.url);
-  
-  const text = await response.text(); // Get as text first
-  console.log("Raw response:", text);
-  const data = await response.json()
+  const data = await response.json(); 
   if (response.ok) {
     console.log("Game started successfully");
     console.log("The response data is:", data);
