@@ -1,5 +1,10 @@
 import GamePage from "@/components/Game/GamePage";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export default function Game() {
-  return <GamePage />;
+  return (
+    <ProtectedRoute>
+      <GamePage />
+    </ProtectedRoute>
+  );
 }

@@ -1,24 +1,33 @@
-from supabase import create_client
-from contextlib import contextmanager
 import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
+from collections.abc import Generator
+from sqlalchemy.orm import Session
 
 load_dotenv()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_CONNECTION_SESSION_POOLING = os.getenv("SUPABASE_CONNECTION_SESSION_POOLING")
+engine = create_engine(
+    SUPABASE_CONNECTION_SESSION_POOLING,
+    pool_size=5,
+    max_overflow=20,
+    pool_recycle=3600,
+    pool_pre_ping=True,
+)
 
-supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def get_supabase_client():
-    return supabase_client
-
-
-@contextmanager
-def get_db_session():
+def get_postgres_session() -> Generator[Session, None, None]:
+    """Get SQLAlchemy session for PostgreSQL."""
+    session = SessionLocal()
     try:
-        yield supabase_client
-    except Exception as e:
-        print(f"Database error: {e}")
-        raise
+        yield session
+    finally:
+        session.close()
+
+
+def get_postgres_url() -> str:
+    """Get PostgreSQL connection URL."""
+    return SUPABASE_CONNECTION_SESSION_POOLING

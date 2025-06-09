@@ -1,51 +1,53 @@
 from api.repository.base_repository import BaseRepository
-from api.models.models import Card, Player, Game, GamePlayer, GameDeck, PlayerHand, DiscardPile, PlayedCard
+from api.models.models import Card, User, Game, GamePlayer, GameDeck, PlayerHand, DiscardPile, PlayedCard
+from api.shared.db_connections import get_postgres_session
+from sqlalchemy.orm import Session
 
 
 class CardRepository(BaseRepository[Card]):
-    def __init__(self):
-        super().__init__("cards", Card)
+    def __init__(self, db: Session):
+        super().__init__(db, Card)
 
 
-class PlayerRepository(BaseRepository[Player]):
-    def __init__(self):
-        super().__init__("players", Player)
+class UserRepository(BaseRepository[User]):
+    def __init__(self, db: Session):
+        super().__init__(db, User)
 
 
 class GameRepository(BaseRepository[Game]):
-    def __init__(self):
-        super().__init__("games", Game)
+    def __init__(self, db: Session):
+        super().__init__(db, Game)
 
 
 class GamePlayerRepository(BaseRepository[GamePlayer]):
-    def __init__(self):
-        super().__init__("game_players", GamePlayer)
+    def __init__(self, db: Session):
+        super().__init__(db, GamePlayer)
 
 
 class GameDeckRepository(BaseRepository[GameDeck]):
-    def __init__(self):
-        super().__init__("game_decks", GameDeck)
+    def __init__(self, db: Session):
+        super().__init__(db, GameDeck)
 
 
 class PlayerHandRepository(BaseRepository[PlayerHand]):
-    def __init__(self):
-        super().__init__("player_hands", PlayerHand)
+    def __init__(self, db: Session):
+        super().__init__(db, PlayerHand)
 
 
 class DiscardPileRepository(BaseRepository[DiscardPile]):
-    def __init__(self):
-        super().__init__("discard_piles", DiscardPile)
+    def __init__(self, db: Session):
+        super().__init__(db, DiscardPile)
 
 
 class PlayedCardRepository(BaseRepository[PlayedCard]):
-    def __init__(self):
-        super().__init__("played_cards", PlayedCard)
+    def __init__(self, db: Session):
+        super().__init__(db, PlayedCard)
 
 
 __all__ = [
     "BaseRepository",
     "CardRepository",
-    "PlayerRepository",
+    "UserRepository",
     "GameRepository",
     "GamePlayerRepository",
     "GameDeckRepository",

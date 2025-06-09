@@ -2,16 +2,25 @@
 name = "hanabi-backend"
 version = "0.1.0"
 description = "Hanabi game backend"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Gianluca Sasanelli <gianluca.sasanelli@gmail.com>"]
 package-mode = false  # Add it here, inside the [tool.poetry] section
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.12"
 fastapi = "^0.104.1"
 uvicorn = "^0.24.0"
 requests = "^2.31.0"
 supabase = "^2.15.2"
 python-dotenv = "^1.1.0"
+alembic = "^1.16.1"
+psycopg2-binary = "^2.9.10"
+sqlalchemy = "^2.0.41"
+sqlmodel = "^0.0.24"
+bcrypt = "^4.3.0"
+python-jose = "^3.5.0"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
 
 [build-system]
 requires = ["poetry-core"]
